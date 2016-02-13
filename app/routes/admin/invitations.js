@@ -4,5 +4,16 @@ export default Ember.Route.extend({
 
   model() {
     return this.store.findAll('invitation');
+  },
+
+  actions: {
+
+    deleteInvitation(invitation) {
+      let confirmation = confirm('Deleting this invitation. Are you sure?');
+
+      if (confirmation) {
+        invitation.destroyRecord();
+      }
+    }
   }
 });
